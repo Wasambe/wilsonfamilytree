@@ -25,7 +25,6 @@
         <script src="jquery.js"></script>
         <script src="fastclick.js"></script>
         <script src="foundation.min.js"></script>
-		<!-- <script src="d3mw.js"></script>  -->
 		
 		
 		
@@ -49,6 +48,7 @@
 
 body {
     overflow: hidden;
+	background-color: purple;
 }
 
 
@@ -56,7 +56,7 @@ div.sticky {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  background-color: yellow;
+  background-color: purple;
   padding: 10px;
   font-size: 20px;
   height: 50px;
@@ -83,19 +83,18 @@ div.sticky {
    <div id="body">
 <div class="sticky">
 <p style='float:left'>
-<!-- <button class='butadmin' id='admin' onclick='adminprompt()'>Admin</button> -->
+<button class='butadmin' id='admin' onclick='adminprompt()'>Admin</button>
 <button class='butsticky' id='expandAllbut' onclick='expandAll()'>Expand All</button>
 <button class='butsticky'id='collapseAllbut' onclick='collapseAll()'>Collapse All</button>
 </p>
-
 <p id='padmin' style='float:left'>
-<!--
 <button class='butsticky'id='savetree' onclick='savetree()'>Save Tree</button>
 <button class='butsticky'id='opentree' onclick='opentree()'>Open Tree</button>
 <button class='butsticky'id='startoption' onclick='startoption()'>Demo Tree</button>
+<button class='butsearchtree'id='searchtree' onclick='searchtree()'>Search Tree</button>
 
 
-
+<!--
  create new tree now done by OpenTree/New
 <button class='butsticky'id='createnewtree' onclick='createnewtree()'>Create New Tree</button>
 

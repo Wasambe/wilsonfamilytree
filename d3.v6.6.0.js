@@ -13042,7 +13042,7 @@ function stratify() {
       node = nodes[i];
       if (nodeId = node.parent) {
         parent = nodeByKey.get(nodeId);
-		if (!parent) throw new Error("missing: " + nodeId);
+        if (!parent) throw new Error("missing: " + nodeId);
         if (parent === ambiguous) throw new Error("ambiguous: " + nodeId);
         if (parent.children) parent.children.push(node);
         else parent.children = [node];

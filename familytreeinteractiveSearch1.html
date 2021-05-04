@@ -1,0 +1,169 @@
+<!-- 14 Apr 2021 Test using JSON only -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+  <link rel="stylesheet" href="foundation.css" />
+<link rel="stylesheet" href="app.css" />
+<link rel="stylesheet" href="d3-context-menu.css" />
+
+
+  <title>Family Tree Interactive</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ 
+ <script src="d3.v6.6.0.js"></script>
+    <script>
+        var d3v6 = window.d3;
+        window.d3 = null;
+    </script>
+  <script src="d3.v3.js"></script>
+
+       <script src="d3-context-menu.js"></script>
+      	   <script src="underscore-min.js"></script>
+        <script src="jquery.js"></script>
+        <script src="fastclick.js"></script>
+        <script src="foundation.min.js"></script>
+		
+		
+		
+  <style id="compiled-css" type="text/css">
+      .node {
+    cursor: pointer;
+}
+.node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+.node text {
+    font: 10px sans-serif;
+}
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+}
+
+body {
+    overflow: hidden;
+	background-color: purple;
+}
+
+
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: purple;
+  padding: 10px;
+  font-size: 20px;
+  height: 50px;
+ }
+
+.butsticky{
+ background-color: red;
+}
+   
+  </style>
+
+ <!-- <script id="insert"></script>  -->
+
+
+</head>
+<body>
+
+<dialog id="mydia">
+
+</dialog>
+
+	 
+	 
+   <div id="body">
+<div class="sticky">
+<p style='float:left'>
+<button class='butadmin' id='admin' onclick='adminprompt()'>Admin</button>
+<button class='butsticky' id='expandAllbut' onclick='expandAll()'>Expand All</button>
+<button class='butsticky'id='collapseAllbut' onclick='collapseAll()'>Collapse All</button>
+</p>
+<p id='padmin' style='float:left'>
+<button class='butsticky'id='savetree' onclick='savetree()'>Save Tree</button>
+<button class='butsticky'id='opentree' onclick='opentree()'>Open Tree</button>
+<button class='butsticky'id='startoption' onclick='startoption()'>Demo Tree</button>
+<!--<button class='butsearchtree'id='searchtree' onclick='searchtree()'>Search Tree</button>-->
+<button class='butsearchtree'id='searchtree' onclick='onSubmitFilter()'>Search Tree</button>
+
+
+<!--
+ create new tree now done by OpenTree/New
+<button class='butsticky'id='createnewtree' onclick='createnewtree()'>Create New Tree</button>
+
+<button class='butsticky' id='test' onclick='allStorage()'>Test</button>
+<button class='butsticky' id='modalstorage' onclick='allStorage()'>Modal Storage</button>
+<button id="myBtn" onclick='openmodal()'>Open Modal</button>
+-->
+</p>
+</div>
+    </div>
+	
+
+	
+	
+	 <div id="RenameNodeModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+          <h2 id="modalTitle">Rename Node</h2>
+          <form id="RenameNodeForm">
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Node name
+                  <input type="text" class="inputName" id='RenameNodeName' placeholder="node name" />
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-8 columns">
+                &nbsp;
+              </div>
+              <div class="large-4 columns">
+                <!--  <a href="#" class="button info" onclick="close_rename_node_modal()">Cancel</a>   -->
+                <a href="#" class="button info" onclick="close_modal()">Cancel</a>
+				<a href="#" class="button success" onclick="rename_node()">Rename</a>
+              </div>
+            </div>
+          </form>
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+
+        <div id="CreateNodeModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+          <h2 id="modalTitle">Create Node</h2>
+          <form id="CreateNodeForm">
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Node name
+                  <input type="text" class="inputName" id='CreateNodeName' placeholder="node name" />
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-8 columns">
+                &nbsp;
+              </div>
+              <div class="large-4 columns">
+               <!-- <a href="#" class="button info" onclick="close_create_node_modal()">Cancel</a> -->
+				<a href="#" class="button info" onclick="close_modal()">Cancel</a>
+                
+                <a href="#" class="button success" onclick="create_node()">Create</a>
+              </div>
+            </div>
+          </form>
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+	
+	<div id="tree-container"></div>
+	
+	
+	<script src="d3mwSearch1.js"></script>
+		
+
+</body>
+</html>
